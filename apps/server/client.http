@@ -54,3 +54,16 @@ Content-Type: application/json
   "email": "alvaro@email.com",
   "password": "123456"
 }
+
+###
+
+# @name create_merchant
+POST {{baseUrl}}/merchants
+Content-Type: application/json
+Authorization: Bearer {{authtoken}}
+
+{
+  "name": "Buzz Pizza",
+  "description": "As melhores pizzas da região",
+  "cnpj": "00000000000100"
+}

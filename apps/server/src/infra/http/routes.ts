@@ -6,6 +6,7 @@ import { GetPartnerController } from "./controllers/get-partner-controller";
 import { GetAllPartnersController } from "./controllers/get-all-partners-controller";
 import { AuthenticatePartnerWithPasswordController } from "./controllers/authenticate-partner-with-password-controller";
 import { ensureIfPartnerIsAuthenticated } from "./middlewares/ensure-if-partner-is-authenticated";
+import { CreateMerchantController } from "./controllers/create-merchant-controller";
 
 export async function routes(app: FastifyInstance) {
   const createPartnerController = new CreatePartnerController();
@@ -14,6 +15,8 @@ export async function routes(app: FastifyInstance) {
   const getPartnerController = new GetPartnerController();
   const getAllPartnersController = new GetAllPartnersController();
   const authenticatePartnerWithPasswordController = new AuthenticatePartnerWithPasswordController();
+
+  const createMerchantController = new CreateMerchantController();
 
   app.post('/api/v1/partners', createPartnerController.handle);
   app.post('/api/v1/partners/send-confirmation', sendPartnerEmailConfirmationController.handle);
@@ -25,4 +28,10 @@ export async function routes(app: FastifyInstance) {
     getAllPartnersController.handle
   );
   app.post('/api/v1/partners/sessions', authenticatePartnerWithPasswordController.handle);
+  
+  app.post('/api/v1/merchants', {
+    preHandler: ensureIfPartnerIsAuthenticated,
+  }, 
+    createMerchantController.handle
+  );
 } 

@@ -16,5 +16,22 @@ model Partner {
   isEmailConfirmed Boolean  @default(false) @map("is_email_confirmed")
   createdAt        DateTime @default(now()) @map("created_at")
 
+  merchants Merchant[]
+
   @@map("partners")
+}
+
+model Merchant {
+  id          String   @id @default(uuid())
+  name        String
+  cnpj        String   @unique
+  imageUrl    String?  @map("image_url")
+  description String
+  partnerId   String   @map("partner_id")
+  rate        Int      @default(0)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  Partner Partner @relation(fields: [partnerId], references: [id])
+
+  @@map("merchants")
 }

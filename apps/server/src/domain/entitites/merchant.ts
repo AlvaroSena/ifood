@@ -1,13 +1,14 @@
 import { Entity } from "./Entity";
 
 export type MerchantProps = {
+  id?: string;
   name: string;
   cnpj: string;
-  imageUrl?: string;
+  imageUrl?: string | null;
   description: string;
   partnerId: string;
-  rate: number;
-  createdAt: Date;
+  rate?: number;
+  createdAt?: Date;
 }
 
 export class Merchant extends Entity<MerchantProps> {
