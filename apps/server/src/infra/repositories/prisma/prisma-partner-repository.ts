@@ -36,4 +36,17 @@ export class PrismaPartnerRepository implements PartnerRepository {
     
     return partners;
   }
+
+  async confirmEmail(email: string): Promise<PartnerProps> {
+    const partner = await this.prisma.partner.update({
+      where: {
+        email,
+      },
+      data: {
+        isEmailConfirmed: true,
+      }
+    });
+
+    return partner;
+  }
 }

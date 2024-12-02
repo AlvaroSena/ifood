@@ -9,3 +9,23 @@ Content-Type: application/json
   "email": "alvaro@email.com",
   "password": "1234"
 }
+
+###
+
+# @name send_partner_confirmation
+POST {{baseUrl}}/partners/send-confirmation
+Content-Type: application/json
+
+{
+  "email": "alvaro@email.com"
+}
+
+###
+
+# @name confirm_partner
+POST {{baseUrl}}/partners/email-confirmation
+Content-Type: application/json
+
+{
+  "email": "alvaro@email.com"
+}

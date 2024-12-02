@@ -1,6 +1,7 @@
 import fastity from 'fastify'
 import { routes } from './infra/http/routes';
 import { EmailAlreadyTakenError } from './core/errors/EmailAlreadyTakenError';
+import { ResourceNotFoundError } from './core/errors/ResourceNotFoundError';
 
 export const app = fastity();
 app.register(routes);
@@ -9,7 +10,11 @@ app.setErrorHandler((error, _, reply) => {
   if (error instanceof EmailAlreadyTakenError) {
     return reply.status(409).send({ message: error.message })
   }
-})
+
+  if (error instanceof ResourceNotFoundError) {
+    return reply.status(404).send({ message: error.message })
+  }
+});
 
 app.get('/', (request, reply) => {
   return reply.send({ message: 'hello' });

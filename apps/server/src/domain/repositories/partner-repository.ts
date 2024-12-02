@@ -5,4 +5,5 @@ export interface PartnerRepository {
   findById(_id: string): Promise<PartnerProps | null>;
   findByEmail(email: string): Promise<PartnerProps | null>;
   findAll(): Promise<PartnerProps[]>;
+  confirmEmail(email: string): Promise<PartnerProps>
 }
