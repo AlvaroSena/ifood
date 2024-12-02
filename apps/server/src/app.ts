@@ -2,11 +2,19 @@ import fastity from 'fastify'
 import { routes } from './infra/http/routes';
 import { EmailAlreadyTakenError } from './core/errors/EmailAlreadyTakenError';
 import { ResourceNotFoundError } from './core/errors/ResourceNotFoundError';
+import { ZodError } from 'zod';
 
 export const app = fastity();
 app.register(routes);
 
 app.setErrorHandler((error, _, reply) => {
+  if (error instanceof ZodError) {
+    return reply.status(400).send({
+      message: 'Validation error',
+      issues: error.format(),
+    })
+  }
+
   if (error instanceof EmailAlreadyTakenError) {
     return reply.status(409).send({ message: error.message })
   }
