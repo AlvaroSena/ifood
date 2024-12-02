@@ -7,7 +7,7 @@ Content-Type: application/json
 {
   "name": "Alvaro",
   "email": "alvaro@email.com",
-  "password": "1234"
+  "password": "123456"
 }
 
 ###
@@ -33,5 +33,5 @@ Content-Type: application/json
 ###
 
 # @name get_partner
-GET {{baseUrl}}/partners/ce8ca22c-1e6f-49a7-8db4-23ae401cf62a
+GET {{baseUrl}}/partners/15d41b4b-a0bd-4235-aef9-a55f5612ab68
 Content-Type: application/json

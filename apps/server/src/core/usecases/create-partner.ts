@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { Partner, PartnerProps } from "../../domain/entitites/partner";
 import { PrismaPartnerRepository } from "../../infra/repositories/prisma/prisma-partner-repository";
 import { EmailAlreadyTakenError } from "../errors/EmailAlreadyTakenError";
@@ -18,7 +19,7 @@ export class CreatePartner {
       throw new EmailAlreadyTakenError('Endereço de email já está em uso.');
     }
 
-    const partner = await this.repository.save({ name, email, password });
+    const partner = await this.repository.save({ name, email, password: await hash(password, 6) });
 
     return {
       partner,
