@@ -35,3 +35,9 @@ Content-Type: application/json
 # @name get_partner
 GET {{baseUrl}}/partners/15d41b4b-a0bd-4235-aef9-a55f5612ab68
 Content-Type: application/json
+
+###
+
+# @name get_all_partners
+GET {{baseUrl}}/partners
+Content-Type: application/json

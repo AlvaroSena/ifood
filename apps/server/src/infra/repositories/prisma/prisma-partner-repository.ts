@@ -1,13 +1,17 @@
 import { PrismaClient } from "@prisma/client";
-import { Partner, PartnerProps } from "../../../domain/entitites/partner";
+import { PartnerProps } from "../../../domain/entitites/partner";
 import { PartnerRepository } from "../../../domain/repositories/partner-repository";
 
 export class PrismaPartnerRepository implements PartnerRepository {
   constructor(private prisma: PrismaClient) {}
 
-  async save(partner: PartnerProps): Promise<PartnerProps> {
+  async save({ name, email, password }: PartnerProps): Promise<PartnerProps> {
     return await this.prisma.partner.create({
-      data: partner,
+      data: {
+        name,
+        email,
+        password: password!!
+      },
     });
   }
 
@@ -32,7 +36,16 @@ export class PrismaPartnerRepository implements PartnerRepository {
   }
 
   async findAll(): Promise<PartnerProps[]> {
-    const partners = await this.prisma.partner.findMany();
+    const partners = await this.prisma.partner.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        avatarUrl: true,
+        isEmailConfirmed: true,
+        createdAt: true,
+      }
+    });
     
     return partners;
   }
