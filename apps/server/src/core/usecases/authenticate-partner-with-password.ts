@@ -11,10 +11,10 @@ export class AuthenticatePartnerWithPassword {
     const partner = await this.repository.findByEmail(email);
 
     if (!partner) {
-      throw new ResourceNotFoundError('Parceiro não encontrado.')
+      throw new UnauthorizedError('Email ou senha incorreto.')
     }
 
-    const passwordMatches = compare(password, partner.password!!);
+    const passwordMatches = await compare(password, partner.password!!);
 
     if (!passwordMatches) {
       throw new UnauthorizedError('Email ou senha incorreto.')
