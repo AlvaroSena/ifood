@@ -29,3 +29,9 @@ Content-Type: application/json
 {
   "email": "alvaro@email.com"
 }
+
+###
+
+# @name get_partner
+GET {{baseUrl}}/partners/ce8ca22c-1e6f-49a7-8db4-23ae401cf62a
+Content-Type: application/json
