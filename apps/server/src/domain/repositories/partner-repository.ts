@@ -1,8 +1,8 @@
-import { Partner } from "../entitites/partner";
+import { Partner, PartnerProps } from "../entitites/partner";
 
 export interface PartnerRepository {
-  save(partner: Partner): Promise<Partner>;
-  findById(_id: string): Promise<Partner | null>;
-  findByEmail(email: string): Promise<Partner | null>;
-  findAll(): Promise<Partner[]>;
+  save(partner: PartnerProps): Promise<PartnerProps>;
+  findById(_id: string): Promise<PartnerProps | null>;
+  findByEmail(email: string): Promise<PartnerProps | null>;
+  findAll(): Promise<PartnerProps[]>;
 }

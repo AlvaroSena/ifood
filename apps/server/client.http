@@ -1,0 +1,11 @@
+@baseUrl = http://localhost:3333/api/v1
+
+# @name create_partner
+POST {{baseUrl}}/partners
+Content-Type: application/json
+
+{
+  "name": "Alvaro",
+  "email": "alvaro@email.com",
+  "password": "1234"
+}

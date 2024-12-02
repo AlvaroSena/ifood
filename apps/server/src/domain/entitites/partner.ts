@@ -3,11 +3,10 @@ import { Entity } from "./Entity";
 export type PartnerProps = {
   name: string;
   email: string;
-  avatarUrl?: string;
+  avatarUrl?: string | null;
   password: string;
-  cnpj: string;
-  isEmailConfirmed: boolean;
-  createdAt: Date;
+  isEmailConfirmed?: boolean;
+  createdAt?: Date;
 }
 
 export class Partner extends Entity<PartnerProps> {

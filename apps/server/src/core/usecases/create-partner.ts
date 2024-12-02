@@ -1,5 +1,27 @@
-import { Partner } from "../../domain/entitites/partner";
+import { Partner, PartnerProps } from "../../domain/entitites/partner";
+import { PrismaPartnerRepository } from "../../infra/repositories/prisma/prisma-partner-repository";
+import { EmailAlreadyTakenError } from "../errors/EmailAlreadyTakenError";
+
+interface CraetePartnerRequest {
+  name: string;
+  email: string;
+  password: string;
+}
 
 export class CreatePartner {
-  async execute(): Promise<Partner> {}
+  constructor(private repository: PrismaPartnerRepository) {}
+
+  async execute({ name, email, password }: CraetePartnerRequest) {
+    const partnerAlreadyExists = await this.repository.findByEmail(email);
+
+    if (partnerAlreadyExists) {
+      throw new EmailAlreadyTakenError('Endereço de email já está em uso.');
+    }
+
+    const partner = await this.repository.save({ name, email, password });
+
+    return {
+      partner,
+    }
+  }
 }

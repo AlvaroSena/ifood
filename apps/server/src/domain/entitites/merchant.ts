@@ -2,6 +2,7 @@ import { Entity } from "./Entity";
 
 export type MerchantProps = {
   name: string;
+  cnpj: string;
   imageUrl?: string;
   description: string;
   partnerId: string;
