@@ -4,6 +4,7 @@ import { SendPartnerEmailConfirmationController } from "./controllers/send-partn
 import { ConfirmPartnerEmailController } from "./controllers/confirm-partner-email-controller";
 import { GetPartnerController } from "./controllers/get-partner-controller";
 import { GetAllPartnersController } from "./controllers/get-all-partners-controller";
+import { AuthenticatePartnerWithPasswordController } from "./controllers/authenticate-partner-with-password-controller";
 
 export async function routes(app: FastifyInstance) {
   const createPartnerController = new CreatePartnerController();
@@ -11,10 +12,12 @@ export async function routes(app: FastifyInstance) {
   const confirmPartnerEmailController = new ConfirmPartnerEmailController();
   const getPartnerController = new GetPartnerController();
   const getAllPartnersController = new GetAllPartnersController();
+  const authenticatePartnerWithPasswordController = new AuthenticatePartnerWithPasswordController();
 
   app.post('/api/v1/partners', createPartnerController.handle);
   app.post('/api/v1/partners/send-confirmation', sendPartnerEmailConfirmationController.handle);
   app.post('/api/v1/partners/email-confirmation', confirmPartnerEmailController.handle);
   app.get('/api/v1/partners/:partnerId', getPartnerController.handle);
   app.get('/api/v1/partners', getAllPartnersController.handle);
+  app.post('/api/v1/partners/sessions', authenticatePartnerWithPasswordController.handle);
 } 

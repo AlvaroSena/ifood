@@ -3,6 +3,7 @@ import { routes } from './infra/http/routes';
 import { EmailAlreadyTakenError } from './core/errors/EmailAlreadyTakenError';
 import { ResourceNotFoundError } from './core/errors/ResourceNotFoundError';
 import { ZodError } from 'zod';
+import { UnauthorizedError } from './core/errors/UnauthorizedError';
 
 export const app = fastity();
 app.register(routes);
@@ -21,6 +22,10 @@ app.setErrorHandler((error, _, reply) => {
 
   if (error instanceof ResourceNotFoundError) {
     return reply.status(404).send({ message: error.message })
+  }
+
+  if (error instanceof UnauthorizedError) {
+    return reply.status(401).send({ message: error.message })
   }
 });
 

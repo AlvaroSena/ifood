@@ -41,3 +41,14 @@ Content-Type: application/json
 # @name get_all_partners
 GET {{baseUrl}}/partners
 Content-Type: application/json
+
+###
+
+# @name auth_partner_with_password
+POST {{baseUrl}}/partners/sessions
+Content-Type: application/json
+
+{
+  "email": "alvaro@email.com",
+  "password": "123456"
+}
