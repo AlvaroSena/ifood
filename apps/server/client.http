@@ -1,4 +1,5 @@
 @baseUrl = http://localhost:3333/api/v1
+@authtoken = {{auth_partner_with_password.response.body.token}}
 
 # @name create_partner
 POST {{baseUrl}}/partners
@@ -41,6 +42,7 @@ Content-Type: application/json
 # @name get_all_partners
 GET {{baseUrl}}/partners
 Content-Type: application/json
+Authorization: Bearer {{authtoken}}
 
 ###
 
@@ -50,5 +52,5 @@ Content-Type: application/json
 
 {
   "email": "alvaro@email.com",
-  "password": "123456adasd"
+  "password": "123456"
 }
