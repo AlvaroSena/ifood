@@ -2,10 +2,10 @@ import { PrismaMerchantRepository } from "../../infra/repositories/prisma/prisma
 import { MerchantAlreadyExistsError } from "../errors/MerchantAlreadyExistsError"
 
 interface CreateMerchantRequest {
-  name: string
-  description: string
-  cnpj: string
-  partnerId: string
+  name: string;
+  description: string;
+  cnpj: string;
+  partnerId: string;
 }
 
 export class CreateMerchant {

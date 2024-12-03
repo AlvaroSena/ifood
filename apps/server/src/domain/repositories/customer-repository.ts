@@ -1,8 +1,8 @@
-import { Customer } from "../entitites/customer";
+import { CustomerProps } from "../entitites/customer";
 
 export interface CustomerRepository {
-  save(customer: Customer): Promise<Customer>;
-  findById(_id: string): Promise<Customer | null>;
-  findByEmail(email: string): Promise<Customer | null>;
-  findAll(): Promise<Customer[]>;
+  save(customer: CustomerProps): Promise<CustomerProps>;
+  findById(_id: string): Promise<CustomerProps | null>;
+  findByEmail(email: string): Promise<CustomerProps | null>;
+  findAll(): Promise<CustomerProps[]>;
 }

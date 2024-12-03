@@ -1,9 +1,10 @@
 import { Entity } from "./Entity";
 
 export type CustomerProps = {
+  id: string
   name: string;
   email: string;
-  avatarUrl?: string;
+  avatarUrl?: string | null;
   password: string;
   isEmailConfirmed: boolean;
   createdAt: Date;

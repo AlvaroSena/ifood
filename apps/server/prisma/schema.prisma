@@ -35,3 +35,15 @@ model Merchant {
 
   @@map("merchants")
 }
+
+model Customer {
+  id               String   @id @default(uuid())
+  name             String
+  email            String
+  avatarUrl        String?
+  password         String
+  isEmailConfirmed Boolean  @default(false) @map("is_email_confirmed")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  @@map("customers")
+}
