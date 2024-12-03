@@ -1,4 +1,6 @@
 import fastity from 'fastify'
+import swagger from '@fastify/swagger';
+import swaggerUI from '@fastify/swagger-ui';
 import { routes } from './infra/http/routes';
 import { EmailAlreadyTakenError } from './core/errors/EmailAlreadyTakenError';
 import { ResourceNotFoundError } from './core/errors/ResourceNotFoundError';
@@ -6,6 +8,10 @@ import { ZodError } from 'zod';
 import { UnauthorizedError } from './core/errors/UnauthorizedError';
 
 export const app = fastity();
+app.register(swagger);
+app.register(swaggerUI, {
+  routePrefix: '/docs',
+});
 app.register(routes);
 
 app.setErrorHandler((error, _, reply) => {
