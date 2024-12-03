@@ -39,7 +39,7 @@ model Merchant {
 model Customer {
   id               String   @id @default(uuid())
   name             String
-  email            String
+  email            String   @unique
   avatarUrl        String?
   password         String
   isEmailConfirmed Boolean  @default(false) @map("is_email_confirmed")

@@ -10,6 +10,7 @@ import { CreateMerchantController } from "./controllers/create-merchant-controll
 import { SendPartnerMagicLinkController } from "./controllers/send-partner-magic-link-controller";
 import { AuthenticatePartnerWithMagicLinkController } from "./controllers/authenticate-partner-with-magic-link-controller";
 import { CreateCustomerController } from "./controllers/create-customer-controller";
+import { AuthenticateCustomerWithPasswordController } from "./controllers/authenticate-customer-with-password-controller";
 
 export async function routes(app: FastifyInstance) {
   const createPartnerController = new CreatePartnerController();
@@ -24,6 +25,7 @@ export async function routes(app: FastifyInstance) {
   const createMerchantController = new CreateMerchantController();
 
   const createCustomerController = new CreateCustomerController();
+  const authenticateCustomerWithPasswordController = new AuthenticateCustomerWithPasswordController();
 
   app.post('/api/v1/partners', createPartnerController.handle);
   app.post('/api/v1/partners/send-confirmation', sendPartnerEmailConfirmationController.handle);
@@ -45,4 +47,5 @@ export async function routes(app: FastifyInstance) {
   );
 
   app.post('/api/v1/customers', createCustomerController.handle);
+  app.post('/api/v1/customers/sessions', authenticateCustomerWithPasswordController.handle);
 } 

@@ -12,28 +12,28 @@ export class PrismaCustomerRepository implements CustomerRepository {
   }
 
   async findById(_id: string): Promise<CustomerProps | null> {
-    const partner = await this.prisma.customer.findUnique({
+    const customer = await this.prisma.customer.findUnique({
       where: {
         id: _id,
       }
     });
 
-    return partner;
+    return customer;
   }
 
   async findByEmail(email: string): Promise<CustomerProps | null> {
-    const partner = await this.prisma.customer.findUnique({
+    const customer = await this.prisma.customer.findUnique({
       where: {
-        id: email,
+        email: email,
       }
     });
 
-    return partner;
+    return customer;
   }
 
   async findAll(): Promise<CustomerProps[]> {
-    const partners = await this.prisma.customer.findMany();
+    const customers = await this.prisma.customer.findMany();
 
-    return partners;
+    return customers;
   }
 }

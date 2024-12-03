@@ -95,3 +95,14 @@ Content-Type: application/json
   "email": "customer01@email.com",
   "password": "123456"
 }
+
+###
+
+# @name auth_customer_with_password
+POST {{baseUrl}}/customers/sessions
+Content-Type: application/json
+
+{
+  "email": "customer01@email.com",
+  "password": "123456"
+}
