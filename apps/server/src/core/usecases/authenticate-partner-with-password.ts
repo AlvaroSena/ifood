@@ -3,6 +3,7 @@ import { PrismaPartnerRepository } from "../../infra/repositories/prisma/prisma-
 import { ResourceNotFoundError } from "../errors/ResourceNotFoundError";
 import { UnauthorizedError } from "../errors/UnauthorizedError";
 import { sign } from 'jsonwebtoken';
+import { env } from "../../env";
 
 export class AuthenticatePartnerWithPassword {
   constructor(private repository: PrismaPartnerRepository) {}
@@ -20,17 +21,14 @@ export class AuthenticatePartnerWithPassword {
       throw new UnauthorizedError('Email ou senha incorreto.')
     }
 
-    const secret = process.env.JWT_SECRET!!;
-    const expiresIn = process.env.JWT_EXPIRES_IN!!;
-
     const token = await sign({
       id: partner.id,
       name: partner.name,
       email: partner.email,
       avatarUrl: partner.avatarUrl,
-    }, secret, {
+    }, env.JWT_SECRET, {
       subject: partner.id,
-      expiresIn
+      expiresIn: env.JWT_EXPIRES_IN,
     });
 
     return {
