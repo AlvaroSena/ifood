@@ -67,3 +67,19 @@ Authorization: Bearer {{authtoken}}
   "description": "As melhores pizzas da região",
   "cnpj": "00000000000100"
 }
+
+###
+
+# @name send_partner_magic_link
+POST {{baseUrl}}/partners/send-magic-link
+Content-Type: application/json
+
+{
+  "email": "alvaro@email.com"
+}
+
+###
+
+# @name auth_partner_with_magic_link
+GET {{baseUrl}}/partners/sessions/magic-link
+Content-Type: application/json

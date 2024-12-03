@@ -21,7 +21,7 @@ export class AuthenticatePartnerWithPassword {
       throw new UnauthorizedError('Email ou senha incorreto.')
     }
 
-    const token = await sign({
+    const token = sign({
       id: partner.id,
       name: partner.name,
       email: partner.email,

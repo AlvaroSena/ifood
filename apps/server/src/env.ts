@@ -4,6 +4,8 @@ const envSchema = z.object({
   DATABASE_URL: z.string().url(),
   JWT_SECRET: z.string(),
   JWT_EXPIRES_IN: z.string(),
+  NODE_ENV: z.string(),
+  BASE_URL: z.string().url(),
 });
 
 export const env = envSchema.parse(process.env);
