@@ -83,3 +83,15 @@ Content-Type: application/json
 # @name auth_partner_with_magic_link
 GET {{baseUrl}}/partners/sessions/magic-link
 Content-Type: application/json
+
+###
+
+# @name create_customer
+POST {{baseUrl}}/customers
+Content-Type: application/json
+
+{
+  "name": "customer 01",
+  "email": "customer01@email.com",
+  "password": "123456"
+}

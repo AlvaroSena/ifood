@@ -1,13 +1,13 @@
 import { Entity } from "./Entity";
 
 export type CustomerProps = {
-  id: string
+  id?: string
   name: string;
   email: string;
   avatarUrl?: string | null;
   password: string;
-  isEmailConfirmed: boolean;
-  createdAt: Date;
+  isEmailConfirmed?: boolean;
+  createdAt?: Date;
 }
 
 export class Customer extends Entity<CustomerProps> {

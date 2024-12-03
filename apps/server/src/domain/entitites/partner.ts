@@ -1,7 +1,7 @@
 import { Entity } from "./Entity";
 
 export type PartnerProps = {
-  id: string;
+  id?: string;
   name: string;
   email: string;
   avatarUrl?: string | null;

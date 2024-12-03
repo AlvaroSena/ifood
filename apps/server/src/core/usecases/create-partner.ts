@@ -1,5 +1,4 @@
 import { hash } from "bcryptjs";
-import { Partner, PartnerProps } from "../../domain/entitites/partner";
 import { PrismaPartnerRepository } from "../../infra/repositories/prisma/prisma-partner-repository";
 import { EmailAlreadyTakenError } from "../errors/EmailAlreadyTakenError";
 
