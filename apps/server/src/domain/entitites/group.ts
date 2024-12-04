@@ -1,11 +1,12 @@
 import { Entity } from "./Entity";
 
 export type GroupProps = {
+  id?: string
   name: string;
-  description?: string;
+  description?: string | null;
   merchantId: string;
-  isActive: boolean;
-  createdAt: Date;
+  isActive?: boolean;
+  createdAt?: Date;
 }
 
 export class Group extends Entity<GroupProps> {

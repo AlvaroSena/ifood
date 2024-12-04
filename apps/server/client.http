@@ -106,3 +106,15 @@ Content-Type: application/json
   "email": "customer01@email.com",
   "password": "123456"
 }
+
+###
+
+# @name create_group
+POST {{baseUrl}}/groups
+Content-Type: application/json
+Authorization: Bearer {{authtoken}}
+
+{
+  "name": "Pizzas",
+  "merchantId": "3831877f-fbd4-404a-a1e0-88a5131a7d88"
+}

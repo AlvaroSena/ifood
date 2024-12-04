@@ -1,8 +1,7 @@
-import { Group } from "../entitites/group";
+import { GroupProps } from "../entitites/group";
 
 export interface GroupRepository {
-  save(group: Group): Promise<Group>;
-  findById(_id: string): Promise<Group | null>;
-  findByEmail(email: string): Promise<Group | null>;
-  findAll(): Promise<Group[]>;
+  save(group: GroupProps): Promise<GroupProps>;
+  findById(_id: string): Promise<GroupProps | null>;
+  findAll(): Promise<GroupProps[]>;
 }
