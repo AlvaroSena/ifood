@@ -1,12 +1,13 @@
 import { Entity } from "./Entity";
 
 export type ProductProps = {
+  id?: string
   name: string;
   description: string;
-  price: number;
+  priceInCents: number;
   groupId: string;
-  isActive: boolean;
-  createdAt: Date;
+  isActive?: boolean;
+  createdAt?: Date;
 }
 
 export class Product extends Entity<ProductProps> {

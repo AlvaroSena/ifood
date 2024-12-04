@@ -50,14 +50,29 @@ model Customer {
 }
 
 model Group {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
   description String?
-  isActive    Boolean  @default(true) @map("is_active")
-  merchantId  String   @map("merchant_id")
-  createdAt   DateTime @default(now()) @map("created_at")
+  isActive    Boolean   @default(true) @map("is_active")
+  merchantId  String    @map("merchant_id")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  products    Product[]
 
   Merchant Merchant @relation(fields: [merchantId], references: [id])
 
   @@map("groups")
+}
+
+model Product {
+  id           String   @id @default(uuid())
+  name         String
+  description  String
+  priceInCents Int      @map("price_in_cents")
+  isActive     Boolean  @default(true) @map("is_active")
+  groupId      String   @map("group_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  Group Group @relation(fields: [groupId], references: [id])
+
+  @@map("products")
 }

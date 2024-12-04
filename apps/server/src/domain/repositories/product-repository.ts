@@ -1,8 +1,7 @@
-import { Product } from "../entitites/product";
+import { ProductProps } from "../entitites/product";
 
 export interface ProductRepository {
-  save(product: Product): Promise<Product>;
-  findById(_id: string): Promise<Product | null>;
-  findByEmail(email: string): Promise<Product | null>;
-  findAll(): Promise<Product[]>;
+  save(product: ProductProps): Promise<ProductProps>;
+  findById(_id: string): Promise<ProductProps | null>;
+  findAll(): Promise<ProductProps[]>;
 }

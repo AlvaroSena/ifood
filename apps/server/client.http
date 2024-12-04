@@ -118,3 +118,17 @@ Authorization: Bearer {{authtoken}}
   "name": "Pizzas",
   "merchantId": "3831877f-fbd4-404a-a1e0-88a5131a7d88"
 }
+
+###
+
+# @name create_product
+POST {{baseUrl}}/products
+Content-Type: application/json
+Authorization: Bearer {{authtoken}}
+
+{
+  "name": "Pizza de Queijo",
+  "description": "Pizza co queijos diversos",
+  "price": 39.99,
+  "groupId": "2da54388-2328-4b55-895e-5bbceba7f090"
+}
