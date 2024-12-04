@@ -59,7 +59,34 @@ export async function partnerRoutes(app: FastifyInstance) {
     }
   }, createPartnerController.handle);
   
-  app.post('/api/v1/partners/send-confirmation', sendPartnerEmailConfirmationController.handle);
+  app.post('/api/v1/partners/send-confirmation', {
+    schema: {
+      description: 'Send email confirmation to the partner',
+      body: {
+        properties: {
+          email: {
+            type: 'string',
+          }
+        }
+      },
+      response: {
+        200: {
+          description: 'Email sent!',
+          type: 'object',
+        },
+        404: {
+          description: 'Error',
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+            }
+          }
+        }
+      }
+    }
+  }, sendPartnerEmailConfirmationController.handle);
+
   app.post('/api/v1/partners/email-confirmation', confirmPartnerEmailController.handle);
   app.get('/api/v1/partners/:partnerId', getPartnerController.handle);
   app.get('/api/v1/partners', {
